@@ -1,0 +1,34 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="content">
+    <h1>User information-page</h1>
+    <div class="card border-light mb-3">
+        <div class="card-header"><h5>About user</h5></div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:object="${user}">
+                <td scope="col" th:text="*{id}"></td>
+                <td scope="col" th:text="*{firstName}"></td>
+                <td scope="col" th:text="*{lastName}"></td>
+                <td scope="col" th:text="*{age}"></td>
+                <td scope="col" th:text="*{email}"></td>
+                <td scope="col">
+                    <span th:each="role : ${user.roles}"><span th:text="${role + ' '}"></span></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

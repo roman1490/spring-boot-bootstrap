@@ -1,0 +1,13 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="content">
+    <nav class="navbar navbar-light bg-dark">
+        <a class="navbar-brand text-light"><strong><span th:text="${user.email}"></span></strong> with roles:
+            <span th:each="role : ${user.roles}"><span th:text="${role + ' '}"></span></span></a>
+        <form class="form-inline" th:action="@{/logout}" method="post">
+            <button class="btn btn-link text-white-50" type="submit">Logout</button>
+        </form>
+    </nav>
+</div>
+</body>
+</html>
