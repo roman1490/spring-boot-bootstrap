@@ -1,0 +1,52 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="content">
+    <form th:method="PATCH" th:action="@{/admin/{id}(id=${userFromList.getId()})}" th:object="${userFromList}"
+          class="font-weight-bold">
+        <div class="text-center col-md-6 mx-auto">
+            <div class="form-group">
+                <label for="id-edit">ID</label>
+                <input type="number" class="form-control" id="id-edit" th:attr="value=*{id}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="firstName-edit">First Name</label>
+                <input type="text" name="firstName" class="form-control" id="firstName-edit" th:attr="value=*{firstName}">
+            </div>
+
+            <div class="form-group">
+                <label for="lastName-edit">Last Name</label>
+                <input type="text" name="lastName" class="form-control" id="lastName-edit" th:attr="value=*{lastName}">
+            </div>
+
+            <div class="form-group">
+                <label for="age-edit">Age</label>
+                <input type="number" name="age" class="form-control" id="age-edit" th:attr="value=*{age}">
+            </div>
+
+            <div class="form-group">
+                <label for="email-edit">Email</label>
+                <input type="email" name="email" class="form-control" id="email-edit" th:attr="value=*{email}">
+            </div>
+
+            <div class="form-group">
+                <label for="password-edit">Password</label>
+                <input type="password" name="password" class="form-control" id="password-edit">
+            </div>
+
+            <div class="form-group">
+                <label for="role-edit">Role</label>
+                <select class="custom-select" th:name="rolesEditUser" id="role-edit" size="2" multiple>
+                    <option th:each="role : ${roles}" th:value="${role.getId()}" th:text="${role.getAuthority()}"
+                            th:selected="${userFromList.hasRole(role.getAuthority())}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
